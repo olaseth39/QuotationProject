@@ -1,0 +1,67 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+    <p>
+        We could not get the exact volume <b>{{volume}}</b> you required, but we used a very close volume for you.
+    </p>
+    <hr>
+   <table class="table table-bordered">
+       <thead>
+            <tr>
+                <th class="center" colspan="5">Quotation</th>
+            </tr>
+       </thead>
+       <tbody>
+            <tr>
+                <th colspan="3">Attn &nbsp; : {{name}} <br> {{email}}</th>
+                <th colspan="2">Date</th>
+            </tr>
+            <tr>
+<!--                Intentionally left for space-->
+            </tr>
+            <tr>
+                <th class="center" colspan="5">Supply and Installation of <span id="getTankType">{{type_of_tank}}</span> tank</th>
+            </tr>
+            <tr>
+<!--                Intentionally left for space-->
+            </tr>
+            <tr>
+                <th scope="col">S/N</th>
+                <th scope="col">Description</th>
+                <th scope="col">QTY</th>
+                <th scope="col">UnitPrice</th>
+                <th scope="col">Amount</th>
+            </tr>
+            <tr>
+                <th>1</th>
+                <th>{{get_best_dimension[0]}}
+                            <br> Volume required in litres: <span id="panel">&nbsp;: {{volume * 1000}}</span>
+                            <br> Height of : <span id="height">{{get_best_dimension[2]}}</span></th>
+                <th>1</th>
+                <th>&#8358;<span id="price">{{get_best_dimension[1]*240000}}</span></th>
+                <th>&#8358;<span id="amount">{{get_best_dimension[1]*240000*1}}</span></th>
+            </tr>
+            <tr>
+                <th>2</th>
+                <th>Installation</th>
+                <th>1</th>
+                <th>&#8358<span id="installPrice">{{get_best_dimension[1]*9000}}</span></th>
+                <th>&#8358<span id="installAmount">{{get_best_dimension[1]*9000*1}}</span></th>
+            </tr>
+            <tr>
+                <th class="center" colspan="4">Subtotal</th>
+                <th>&#8358<span id="subtotal"></span></th>
+            </tr>
+            <tr>
+                <th class="center" colspan="4">Vat @ 7.5%</th>
+                <th>&#8358<span id="vat"></span></th>
+            </tr>
+            <tr>
+                <th class="center" colspan="4">Total</th>
+                <th>&#8358<span id="total"></span></th>
+            </tr>
+       </tbody>
+   </table>
+
+{% endblock %}
