@@ -1,0 +1,45 @@
+
+{
+  "mail_settings" : {
+    "MAIL_SERVER" : "smtp.gmail.com",
+    "MAIL_PORT" : 465,
+    "MAIL_USE_TLS" : "False",
+    "MAIL_USE_SSL" : "True",
+    "MAIL_USERNAME" : "olaseth39@gmail.com",
+    "MAIL_PASSWORD" : "tjmqvazoyuafpwrm"
+  },
+
+  "database" : {
+    "MYSQL_HOST" : "localhost",
+    "MYSQL_USER" : "root",
+    "MYSQL_PASSWORD" : "",
+    "MYSQL_DB" : "quotation_formulator",
+    "MYSQL_CURSORCLASS" : "DictCursor"
+  },
+
+  "steel_tank" : {
+    "unit_price" : 260000,
+    "installation_price" : 18000,
+    "unit_length" : 1.22,
+    "status" : "unchanged"
+  },
+
+  "grp_tank" : {
+    "h1" : 230000,
+    "h2" : 240000,
+    "h3" : 260000,
+    "h4" : 500000,
+    "installation_price": 13000,
+    "unit_length": 1,
+    "status": "unchanged"
+  },
+
+  "vat" : {
+    "vat" : 0.075,
+    "status": "unchanged"
+  },
+
+  "api" : {
+    "currency" : "YONMNJKB756OENKK"
+  }
+}
