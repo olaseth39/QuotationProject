@@ -1,0 +1,66 @@
+{% extends "layout.html" %}
+
+{% block body %}
+    {% from '_formhelpers.html' import render_field %}
+
+<div class="row col-md-12">
+        <div class="col-md-3">
+        </div>
+        <div class="col-md-6">
+             <h3>Welcome !</h3>
+            <hr>
+            <p>Kindly Sign Up Here! </p>
+            <form class="form-inline" method="POST" action="/signup" enctype="multipart/form-data">
+                <div class="form-group row g-7 align-items-center">
+                    <div class="form-group me col-6">
+                      {{render_field(form.name, class_="form-control")}}
+                    </div>
+                    <div class="form-group me col-6">
+                      {{render_field(form.email, class_="form-control")}}
+                    </div>
+                </div>
+                  <div class="form-group row g-8 align-items-center">
+                        <div class="form-group me col-6">
+                            {{render_field(form.country , class_="form-control") }}
+                        </div>
+                        <div class="form-group me col-6">
+                            {{render_field(form.telephone, class_="form-control")}}
+                        </div>
+                  </div>
+                    <div class="form-group row g-8 align-items-center">
+                        <div class="form-group me col-6">
+                            {{render_field(form.bank_details, class_="form-control") }}
+                        </div>
+                        <div class="form-group me col-6">
+                            {{render_field(form.signatory, class_="form-control")}}
+                        </div>
+                  </div>
+                  <div class="form-group">
+                        <div class="form-group me">
+                            {{render_field(form.company, class_="form-control")}}
+                        </div>
+                          <div class="form-group me">
+                              {{render_field(form.company_address, class_="form-control")}}
+                          </div>
+                  </div>
+                 <div class="form-group row g-8 align-items-center">
+                     <div class="form-group me col-6">
+                       {{render_field(form.logo, class_="form-control")}}
+                    </div>
+                    <div class="form-group me col-6">
+                      {{render_field(form.password, class_="form-control")}}
+                    </div>
+                 </div>
+
+                  <div class="form-group text-center me">
+                      {{form.submit(class_="btn btn-primary")}}
+                  </div>
+            </form>
+            <br>
+            <p class="center">Already have an account? Login here <a href="/login"><button class="btn btn-primary">Login</button></a></p>
+        </div>
+        <div class="col-md-3">
+        </div>
+    </div>
+
+{% endblock %}

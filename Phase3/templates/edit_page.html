@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+
+{% block body %}
+    <br>
+    <div class="row col-md-12">
+        <div class="col-md-4">
+            <p style="padding-top: 55px"><b><i>Please Note</i></b></p>
+            <p><b><i>Prices you are changing to must be in your home country</i></b></p>
+            <p>Unit price is the price of 1 panel</p>
+            <p>Installation price is price for installing a panel</p>
+            <p>Quote_country is the country you are sending the quote to</p>
+        </div>
+        <div class="col-md-4">
+            <div></div>
+
+            <hr>
+
+            <form method="POST" action="">
+                <div class="form-group me">
+                    {% for key,value in details.items() %}
+                        <p><label>{{key}}</label>
+                            <input type="text" id="{{key}}" name="{{key}}" class="form-control" value="{{value}}"></p>
+                    {% endfor %}
+                </div>
+                <div class="form-group text-center me">
+                    <input type="submit" class="btn btn-primary" id="editButton">
+                </div>
+            </form>
+        </div>
+        <div class="col-md-4">
+        </div>
+    </div>
+
+
+
+
+{% endblock %}

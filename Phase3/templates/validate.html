@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+{% block body %}
+    {% from '_formhelpers.html' import render_field %}
+
+    <div class="row col-md-12">
+        <div class="col-md-3">
+        </div>
+
+        <div class="col-md-6">
+          <p>To validate your email, please enter the OTP sent to your mail </p>
+            <hr>
+            <form method="POST" action="/validate">
+                   <div class="form-group m">
+                       Enter OTP(One-time password)<input type="text" class="form-control" name="otp" id="otp" required>
+                   </div>
+                <br>
+
+                <br/>
+                <button type="submit" class="btn btn-primary">Validate</button>
+            </form>
+        </div>
+        <div class="col-md-3">
+        </div>
+    </div>
+
+{% endblock %}

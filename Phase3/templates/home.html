@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+{% block body %}
+    {% from '_formhelpers.html' import render_field %}
+
+    <div class="row col-md-12">
+        <div class="col-md-4">
+        </div>
+         {% if not session['logged_in'] %}
+        <div class="col-md-4">
+             <h3>Welcome ! </h3>
+            <small><b><i>Click on admin if you are a non-Nigerian user</i></b></small>
+            <hr>
+
+            <p>Let's get you a quote <span><b><i>(For Nigerian users only)</i></b></span></p>
+            <form method="POST" action="">
+                  <div class="form-group me">
+                      {{render_field(form.name, class_="form-control", value=request.form.name)}}
+                  </div>
+                   <div class="form-group me">
+                      {{render_field(form.email, class_="form-control", value=request.form.email)}}
+                  </div>
+                  <div class="form-group me">
+                      {{render_field(form.volume , class_="form-control", value=request.form.volume)}}
+                  </div>
+                  <div class="form-group me">
+            <!--          {{form.type_of_tank.label}}-->
+                      {{render_field(form.type_of_tank, class_="form-control")}}
+                  </div>
+                  <div class="form-group text-center me">
+                    <input type="submit" value="Get Quotation" class="btn btn-primary">
+                  </div>
+            </form>
+        </div>
+        {% else %}
+            <p style="padding-top:70px;">You are logged in . </p>
+            <p style="padding-bottom:100px;">Kindly use the get_admin_quotation  . </p>
+        {% endif %}
+    </div>
+
+{% endblock %}

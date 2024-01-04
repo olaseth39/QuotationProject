@@ -1,0 +1,591 @@
+    if request.method == "POST":
+
+        result = request.form
+        cur.connection.commit()
+        if table == "grp_tank_details":
+            id_ = request.form['id']
+            height_1m = request.form['height_1m']
+            height_2m = request.form['height_2m']
+            height_3m = request.form['height_3m']
+            height_4m = request.form['height_4m']
+            installation_price = request.form['installation_price']
+
+            cur.execute("UPDATE grp_tank_details SET id=%s, height_1m=%s,"
+                        "height_2m=%s, height_3m=%s, height_4m=%s, installation_price=%s",
+                        (id_, height_1m, height_2m, height_3m, height_4m, installation_price))
+
+        elif table == "steel_tank_details":
+            id_ = request.form['id']
+            unit_price = request.form['unit_price']
+            installation_price = request.form['installation_price']
+            unit_length = request.form['unit_length']
+
+            cur.execute("UPDATE steel_tank_details SET id=%s, unit_price=%s, installation_price=%s, unit_length=%s",
+                        (id_, unit_price, installation_price, unit_length))
+
+        elif table == "vat":
+            id_ = request.form['id']
+            vat = request.form['vat']
+
+            cur.execute("UPDATE vat SET id=%s, vat=%s ",
+                        (id_, vat))
+
+        else:
+            msg = "You have made a wrong selection"
+            return render_template("edit_page.html", msg=msg)
+
+        cur.connection.commit()
+
+        cur.close()
+
+        # what to if post request is successful
+        flash("Details updated successfully", "Success")
+
+        return redirect(url_for("admit_page"))
+
+    [Afghanistan, Albania, Algeria, Andorra, Angola, Anguilla, Antigua, Argentina, Armenia,Aruba,Australia, Austria, Azerbaijan,Bahamas, Bahrain,Bangladesh,Barbados,Belarus,Belgium,Belize,Benin,Bermuda,Bhutan,Bolivia,Bosnia,Bulgaria/
+    Colombian,China, Cuba, Cape Verde, Croatia Czech Republic, Djibouti, Denmark,England,Egypt, Ethiopia, Ghana, Gambia, Guinea,/
+    Haitia, Hong Kong, Hungary, Israel, India, Iraq, Iran, Iceland, Jamaica, Japan, Kenya, Kuwait,Cambodi, Comory, North Korea,/
+    Sri Lanka, Liberia, Lesotho, Libya, Morocco, Macedonia, Myanma, Maldivia, Malawi, Mexico, Malaysia, Mozambiq, Namibia,/
+    Nepal, Netherlands, New Zealand,Nigeria, Norway,Philippine, Pakistan, Poland, Paraguay, Qatar, Romania, Serbia, Russia,Rwanda,Saudi Arabia,Seychelleys,/
+    Sudan, Sweden, Singapore,Saint Helena, Sierra Leone, Somalia, South Korea, South Africa,Syria, Swaziland,Tunisia,Turkish,Trinidad and Tobago,Taiwan,Tanzanian,
+    Ukrain, Ugandan, United Arab Emirates, United States, Urugua, Zambia, Zimbabwe]
+
+    [Afghanistan
+Albania
+Algeria
+Andorra
+Angola
+Antigua and Barbuda
+Argentina
+Armenia
+Australia
+Austria
+Azerbaijan
+Bahamas
+Bahrain
+Bangladesh
+Barbados
+Belarus
+Belgium
+Belize
+Benin
+Bhutan
+Bolivia
+Bosnia and Herzegovina
+Botswana
+Brazil
+Brunei
+Bulgaria
+Burkina Faso
+Burundi
+Cabo Verde
+Cambodia
+Cameroon
+Canada
+Central African Republic
+Chad
+Chile
+China
+Colombia
+Comoros
+Congo
+Costa Rica
+Côte d'Ivoire
+Croatia
+Cuba
+Cyprus
+Czech Republic (Czechia)
+Denmark
+Djibouti
+Dominica
+Dominican Republic
+DR Congo
+Ecuador
+Egypt
+El Salvador
+Equatorial Guinea
+Eritrea
+Estonia
+Eswatini
+Ethiopia
+Fiji
+Finland
+France
+Gabon
+Gambia
+Georgia
+Germany
+Ghana
+Greece
+Grenada
+Guatemala
+Guinea
+Guinea-Bissau
+Guyana
+Haiti
+Holy See
+Honduras
+Hungary
+Iceland
+India
+Indonesia
+Iran
+Iraq
+Ireland
+Israel
+Italy
+Jamaica
+Japan
+Jordan
+Kazakhstan
+Kenya
+Kiribati
+Kuwait
+Kyrgyzstan
+Laos
+Latvia
+Lebanon
+Lesotho
+Liberia
+Libya
+Liechtenstein
+Lithuania
+Luxembourg
+Madagascar
+Malawi
+Malaysia
+Maldives
+Mali
+Malta
+Marshall Islands
+Mauritania
+Mauritius
+Mexico
+Micronesia
+Moldova
+Monaco
+Mongolia
+Montenegro
+Morocco
+Mozambique
+Myanmar
+Namibia
+Nauru
+Nepal
+Netherlands
+New Zealand
+Nicaragua
+Niger
+Nigeria
+North Korea
+North Macedonia
+Norway
+Oman
+Pakistan
+Palau
+Panama
+Papua New Guinea
+Paraguay
+Peru
+Philippines
+Poland
+Portugal
+Qatar
+Romania
+Russia
+Rwanda
+Saint Kitts & Nevis
+Saint Lucia
+Samoa
+San Marino
+Sao Tome & Principe
+Saudi Arabia
+Senegal
+Serbia
+Seychelles
+Sierra Leone
+Singapore
+Slovakia
+Slovenia
+Solomon Islands
+Somalia
+South Africa
+South Korea
+South Sudan
+Spain
+Sri Lanka
+St. Vincent & Grenadines
+State of Palestine
+Sudan
+Suriname
+Sweden
+Switzerland
+Syria
+Tajikistan
+Tanzania
+Thailand
+Timor-Leste
+Togo
+Tonga
+Trinidad and Tobago
+Tunisia
+Turkey
+Turkmenistan
+Tuvalu
+Uganda
+Ukraine
+United Arab Emirates
+United Kingdom
+United States
+Uruguay
+Uzbekistan
+Vanuatu
+Venezuela
+Vietnam
+Yemen
+Zambia
+Zimbabwe
+
+
+
+    # serial = Serializer(app.secret_key, 60)
+# IMAGES is the extension of image files
+# represents a single set of uploaded files.
+# photos = UploadSet('photos', IMAGES)
+
+# go through all the upload sets, get their configuration, and store the configuration on the app
+# configure_uploads(app, photos)
+
+<!--    The modal starts-->
+    <div class="modal" id="myModal">
+        <form class="" action="/quote_processing" method="POST" enctype="multipart/form-data">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <span class="close" title="Close Modal">&times;</span>
+                    <h3>Additional details</h3>
+                </div>
+                <div class="modal-body">
+                    <div class="form-control me">
+<!--                        <label><b>Time Quotation last before expiration</b></label>-->
+                        <input type="text" name="validity" id="validity" class="form-control" placeholder="Enter Validity of quote" required>
+                    </div>
+                    <div class="form-control me">
+<!--                        <label><b>Time Quotation last before expiration</b></label>-->
+                        <input type="text" name="bankDetails" id="bankDetails" class="form-control" placeholder="Enter bank details for payment" required>
+                    </div>
+                    <div class="form-control me">
+<!--                        <label><b>Time for Supply and Installation</b></label>-->
+                        <input type="text" name="deliveryInstallation" id="deliveryInstallation" class="form-control" placeholder="Enter Delivery and Installation e.g 4 weeks" required>
+                    </div>
+                    <div class="form-control me">
+                        <label><b>Name of Head Engineer</b></label>
+                        <input type="text" class="form-control" placeholder="Signature" name="" required>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <div class="center form-control me">
+                        <button type="submit" class="btn btn-success">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+<!--    The modal ends-->
+    //      get the values from the modal
+        var validity = document.getElementById("validity").value
+        var bankDetails = document.getElementById("bankDetails").value
+        var deliveryInstallation = document.getElementById("deliveryInstallation").value
+        var signature = document.getElementById("signature").value
+
+//        insert the values
+        document.getElementById("validityVal").innerHTML = validity
+        document.getElementById("bankDetailsVal").innerHTML = bankDetails
+        document.getElementById("install").innerHTML = deliveryInstallation
+        document.getElementById("signation").innerHTML = signature
+
+     // for modal and printing document
+        $(document).ready(function(){
+
+          // Get the modal
+        var modal = document.getElementById("myModal");
+
+        // Get the button that opens the modal
+        var btn = document.getElementById("myBtn");
+
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+
+        // When the user clicks the button, open the modal
+        btn.onclick = function() {
+          modal.style.display = "block";
+        }
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() {
+          modal.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+          if (event.target == modal) {
+            modal.style.display = "none";
+          }
+        }
+
+    });
+
+
+             except:
+            try:
+                cur = mysql.connection.cursor()
+                result = cur.execute("SELECT password from admins WHERE email=%s", [email])
+                if result:
+                    return render_template("confirmation_fail_msg.html", email=email)
+
+
+                    else:
+            country = 'Nigeria'
+            ngn_usd_er, usd_currency_code = 1, 1  # for NGN calculations
+
+            # convert to the currency
+            # check for steel
+            if tank_selected == "steel_tank_details":
+                unit_price = price['unit_price']
+                install_price_steel = price['installation_price']
+
+                unit_price_val = round(unit_price * ngn_usd_er * usd_currency_code, 0)
+                install_price_steel_c = round(install_price_steel * ngn_usd_er * usd_currency_code, 0)
+
+                # update the values into db
+                cur.execute("UPDATE steel_tank_details SET unit_price = %s, installation_price = %s,"
+                            "status_ = %s WHERE admin_id = %s",
+                            (unit_price_val, install_price_steel_c, "changed", admin_id)
+                            )
+
+                # # insert the values into db
+                # cur.execute("INSERT INTO steel_tank_details(unit_price, installation_price, "
+                #             "unit_length, admin_id, status_)"
+                #             "VALUES(%s,%s, %s, %s, %s)",(unit_price_val, install_price_steel_c, 1, admin_id, 'changed')
+                #             )
+
+            # for grp
+            else:
+                h_1 = price['height_1m']
+                h_2 = price['height_2m']
+                h_3 = price['height_3m']
+                h_4 = price['height_4m']
+                install_price_grp = price['installation_price']
+                h_1c = round(h_1 * ngn_usd_er * usd_currency_code, 0)
+                h_2c = round(h_2 * ngn_usd_er * usd_currency_code, 0)
+                h_3c = round(h_3 * ngn_usd_er * usd_currency_code, 0)
+                h_4c = round(h_4 * ngn_usd_er * usd_currency_code, 0)
+                install_price_grp_c = round(install_price_grp * ngn_usd_er * usd_currency_code, 0)
+                # print(h_1c)
+
+                # update the values into db
+                cur.execute("UPDATE grp_tank_details SET height_1m = %s, height_2m = %s, height_3m = %s"
+                            "height_4m = %s, installation_price=%s, unit_length=%s, status_ = %s WHERE admin_id = %s",
+                            (h_1c, h_2c, h_3c, h_4c, install_price_grp_c, 'changed', admin_id)
+                            )
+
+
+            former apicode
+
+            response = requests.get(main_url)
+            exchange_values = response.json()
+
+            # get the dollar conversion
+            ngn_usd_er = float(exchange_values['Realtime Currency Exchange Rate']['5. Exchange Rate'])
+
+            # change to the chosen currency code
+            from_c2 = "USD"
+            to_c2 = currency_code
+            main_url2 = base_url + '&from_currency=' + from_c2 + '&to_currency=' + to_c2 + '&apikey=' + api_key
+            response2 = requests.get(main_url2)
+            exchange_values2 = response2.json()
+            usd_currency_code = float(exchange_values2['Realtime Currency Exchange Rate']['5. Exchange Rate'])
+
+            # cur.execute("INSERT INTO grp_tank_details(height_1m, height_2m, "
+                #             "height_3m, height_4m, installation_price, unit_length, admin_id, status_)"
+                #             "VALUES(%s,%s, %s, %s, %s, %s, %s, %s)", (h_1c, h_2c,h_3c,h_4c, install_price_grp_c, 1, admin_id, 'changed')
+                #             )
+
+
+                    if currency_code !="NGN" and status == "unchanged":
+
+            # convert to the currency
+            # check for steel
+            if tank_selected == "steel_tank_details":
+                unit_price = price['unit_price']
+                install_price_steel = price['installation_price']
+
+                unit_price_c = round(unit_price * convert_to_usd * required_currency, 0)
+                install_price_steel_c = round(install_price_steel * convert_to_usd * required_currency, 0)
+
+                # update the values into db
+                cur.execute("UPDATE steel_tank_details SET unit_price = %s, installation_price = %s"
+                            "status_ = %s WHERE admin_id = %s", (unit_price_c, install_price_steel_c, "changed", admin_id)
+                            )
+
+            # for grp
+            else:
+                h_1 = price['height_1m']
+                h_2 = price['height_2m']
+                h_3 = price['height_3m']
+                h_4 = price['height_4m']
+                install_price_grp = price['installation_price']
+                h_1c = round(h_1 * convert_to_usd * required_currency, 0)
+                h_2c = round(h_2 * convert_to_usd * required_currency, 0)
+                h_3c = round(h_3 * convert_to_usd * required_currency, 0)
+                h_4c = round(h_4 * convert_to_usd * required_currency, 0)
+                install_price_grp_c = round(install_price_grp * convert_to_usd * required_currency, 0)
+                # print(h_1c)
+
+                # update the values into db
+                cur.execute("UPDATE grp_tank_details SET height_1m = %s, height_2m = %s, height_3m = %s"
+                            "height_4m = %s, installation_price=%s, unit_length=%s, status_ = %s WHERE admin_id = %s",
+                            (h_1c, h_2c,h_3c,h_4c, install_price_grp_c, 'changed', admin_id)
+                            )
+
+        # don't convert if the status has been changed
+        else :
+            ngn_usd_er, usd_currency_code = 1, 1
+
+            # check for steel
+            if tank_selected == "steel_tank_details":
+                unit_price = price['unit_price']
+                install_price_steel = price['installation_price']
+
+                unit_price_val = round(unit_price * ngn_usd_er * usd_currency_code, 0)
+                install_price_steel_c = round(install_price_steel * ngn_usd_er * usd_currency_code, 0)
+
+                # update the values into db
+                cur.execute("UPDATE steel_tank_details SET unit_price = %s, installation_price = %s WHERE admin_id = %s",
+                             (unit_price_val, install_price_steel_c, admin_id)
+                            )
+
+            # for grp
+            else:
+                h_1 = price['height_1m']
+                h_2 = price['height_2m']
+                h_3 = price['height_3m']
+                h_4 = price['height_4m']
+                install_price_grp = price['installation_price']
+                h_1c = round(h_1 * ngn_usd_er * usd_currency_code, 0)
+                h_2c = round(h_2 * ngn_usd_er * usd_currency_code, 0)
+                h_3c = round(h_3 * ngn_usd_er * usd_currency_code, 0)
+                h_4c = round(h_4 * ngn_usd_er * usd_currency_code, 0)
+                install_price_grp_c = round(install_price_grp * ngn_usd_er * usd_currency_code, 0)
+                # print(h_1c)
+
+                # update the values into db
+                cur.execute("UPDATE grp_tank_details SET height_1m = %s, height_2m = %s, height_3m = %s"
+                            "height_4m = %s, installation_price=%s, unit_length=%s, status_ = %s WHERE admin_id = %s",
+                            (h_1c, h_2c, h_3c, h_4c, install_price_grp_c, 'changed', admin_id)
+                            )
+
+            I lifted this in case I would need it again
+
+                    if currency_code != "NGN" and user_country != "Nigeria" and status == "unchanged":
+
+            # check for steel
+            if tank_selected == "steel_tank_details":
+                unit_price = price['unit_price']
+                install_price_steel = price['installation_price']
+
+                unit_price_c = round(unit_price * convert_to_usd * required_currency, 0)
+                install_price_steel_c = round(install_price_steel * convert_to_usd * required_currency, 0)
+
+                # update the values into db
+                cur.execute("UPDATE steel_tank_details SET unit_price = %s, installation_price = %s"
+                            "status_ = %s WHERE admin_id = %s", (unit_price_c, install_price_steel_c, "changed", admin_id)
+                            )
+
+            # for grp
+            else:
+                h_1 = price['height_1m']
+                h_2 = price['height_2m']
+                h_3 = price['height_3m']
+                h_4 = price['height_4m']
+                install_price_grp = price['installation_price']
+                h_1c = round(h_1 * convert_to_usd * required_currency, 0)
+                h_2c = round(h_2 * convert_to_usd * required_currency, 0)
+                h_3c = round(h_3 * convert_to_usd * required_currency, 0)
+                h_4c = round(h_4 * convert_to_usd * required_currency, 0)
+                install_price_grp_c = round(install_price_grp * convert_to_usd * required_currency, 0)
+                # print(h_1c)
+
+                # update the values into db
+                cur.execute("UPDATE grp_tank_details SET height_1m = %s, height_2m = %s, height_3m = %s"
+                            "height_4m = %s, installation_price=%s, unit_length=%s, status_ = %s WHERE admin_id = %s",
+                            (h_1c, h_2c,h_3c,h_4c, install_price_grp_c, 'changed', admin_id)
+                            )
+
+        # don't convert if the status has been changed
+        else :
+            ngn_usd_er, usd_currency_code = 1, 1
+
+            # check for steel
+            if tank_selected == "steel_tank_details":
+                unit_price = price['unit_price']
+                install_price_steel = price['installation_price']
+
+                unit_price_val = round(unit_price * ngn_usd_er * usd_currency_code, 0)
+                install_price_steel_c = round(install_price_steel * ngn_usd_er * usd_currency_code, 0)
+
+                # update the values into db
+                cur.execute("UPDATE steel_tank_details SET unit_price = %s, installation_price = %s WHERE admin_id = %s",
+                             (unit_price_val, install_price_steel_c, admin_id)
+                            )
+
+            # for grp
+            else:
+                h_1 = price['height_1m']
+                h_2 = price['height_2m']
+                h_3 = price['height_3m']
+                h_4 = price['height_4m']
+                install_price_grp = price['installation_price']
+                h_1c = round(h_1 * ngn_usd_er * usd_currency_code, 0)
+                h_2c = round(h_2 * ngn_usd_er * usd_currency_code, 0)
+                h_3c = round(h_3 * ngn_usd_er * usd_currency_code, 0)
+                h_4c = round(h_4 * ngn_usd_er * usd_currency_code, 0)
+                install_price_grp_c = round(install_price_grp * ngn_usd_er * usd_currency_code, 0)
+                # print(h_1c)
+
+                # update the values into db
+                cur.execute("UPDATE grp_tank_details SET height_1m = %s, height_2m = %s, height_3m = %s"
+                            "height_4m = %s, installation_price=%s, unit_length=%s, status_ = %s WHERE admin_id = %s",
+                            (h_1c, h_2c, h_3c, h_4c, install_price_grp_c, 'changed', admin_id)
+                            )
+
+
+
+
+            @app.route("/quote_processing", methods=['POST', "GET"])
+def quote_processing():
+
+    if request.method == "POST":
+        validity = request.form.get("validity")
+        bank_details = request.form.get("bankDetails")
+        delivery_installation = request.form.get("deliveryInstallation")
+
+    return render_template("quotation_processing.html",
+                           validity=validity,
+                           bank_details=bank_details,
+                           delivery_installation=delivery_installation
+                            )
+
+
+            {% if details == "" %}
+                            <td class="center" colspan="10">No Quotation has been sent</td>
+                        {% else %}
+
+
+
+                    # update the values into db
+                    cur.execute("UPDATE grp_tank_details SET height_1m = %s, height_2m = %s, height_3m = %s"
+                                "height_4m = %s, installation_price=%s, unit_length=%s, status_ = %s WHERE admin_id = %s",
+                                (h_1c, h_2c, h_3c, h_4c, install_price_grp_c, 'changed', admin_id)
+                                )

@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+<br>
+<p> Your (Prospective) Clients </p>
+        <div class="row col-md-2">
+                <table class="table table-bordered">
+                    <thead>
+                       {% for detail in details[0] %}
+                          <td>{{detail}}</td>
+                       {% endfor %}
+                    </thead>
+                    <tbody>
+                        <tr>
+                            {% for detail in details %}
+                                {% for key, value in detail.items() %}
+                                <th>{{value}}</th>
+                                {% endfor %}
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+        </div>
+
+{% endblock %}

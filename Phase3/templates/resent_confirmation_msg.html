@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+
+{% block body %}
+    {% from '_formhelpers.html' import render_field %}
+
+        <div class="row col-md-12">
+        <div class="col-md-3">
+        </div>
+
+        <div class="col-md-6">
+            <hr>
+          <p>A confirmation link has been resent to you at {{email}}. Please check your inbox (and your spam folder) </p>
+            <p>Kindly click on the link to continue</p>
+            <p>Didn't get the link? <a href="{{ url_for('resend_confirmation', email=email) }}">Resend</a> </p>
+
+            <p>You can close this webpage if you have found the link</p>
+        </div>
+        <div class="col-md-3">
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+
+<!--        company's logo  here -->
+    <form action="" method="post" enctype="multipart/form-data">
+        {{render_field(form.hidden_tag())}}
+        {% for error in form.photo.errors %}
+            <span style="color:red;">{{error}}</span>
+        {% endfor %}
+
+        <div class="row justify-content-center">
+            <div class="col-auto">
+                {{render_field(form.photo(class="form-control"))}}
+            </div>
+            <div class="col-auto">
+                {{render_field(form.submit(class="btn btn-success"))}}
+            </div>
+        </div>
+    </form>
+
+{% if file.url %}
+        <div class="mt-5">
+            <img src="{{file_url}}" alt="" style="width:50px; height:50px;">
+        </div>
+    {% endif %}
+
+
+form = UploadForms(photos).get_photo()
+    if request.method == "POST" and form.validate_on_submit():
+        filename = photos.save(form.photo.data)
+        file_url = url_for('get_file', filename=filename)
+    else:
+        file_url = None

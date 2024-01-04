@@ -1,0 +1,17 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+      <a class="nav-link active" href="/">Home</a>
+      {% if session.logged_in or session.confirmed %}
+        <a class="nav-link pull-right" href="logout">Logout</a>
+        <a class="nav-link pull-right" href="/admin_quotation">Get Admin Quotation</a>
+        <a class="nav-link" href="/admin_page">Admin Page</a>
+      {% else %}
+        <a class="navbar nav-link pull-right" href="signup">Admin</a>
+      {% endif %}
+    </div>
+  </div>
+</nav>
+
+
+

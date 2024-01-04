@@ -1,0 +1,87 @@
+{% extends "layout.html" %}
+
+{% block body %}
+    {% from '_formhelpers.html' import render_field %}
+
+    <div class="row col-md-12">
+        <div class="col-md-2">
+        </div>
+        <div class="col-md-8">
+             <h3>Welcome Admin !</h3>
+            <hr>
+            <p>You are about to create an official quotation. Kindly enter the details asked below to be shown on the quotation</p>
+
+            <form action="" method="post">
+                <div class="row col-md-12">
+                    <div class="row col-md-1">
+                    </div>
+                        <div class="row col-md-10">
+                            <div class="form-group row g-7 align-items-center">
+                                <div class="form-group me col-6">
+                                    {{render_field(form.name, class_="form-control", value=request.form.name)}}
+                                </div>
+
+                                <div class="form-group me col-6">
+                                    {{render_field(form.email, class_="form-control", value=request.form.email)}}
+                                </div>
+
+                            </div>
+
+                             <div class="form-group row g-7 align-items-center">
+                                 <div class="form-group me col-6">
+                                    {{render_field(form.company, class_="form-control", value=request.form.company)}}
+                                </div>
+                                  <div class="form-group me col-6">
+                                    {{render_field(form.address, class_="form-control", value=request.form.address)}}
+                                </div>
+                            </div>
+
+                            <div class="form-group row g-7 align-items-center">
+                                <div class="form-group me col-6">
+                                     {{render_field(form.mobile, class_="form-control", value=request.form.mobile)}}
+                                </div>
+                                <div class="form-group me col-6">
+                                    {{render_field(form.validity, class_="form-control", value=request.form.validity)}}
+                                </div>
+                            </div>
+
+                            <div class="form-group row g-7 align-items-center">
+                                <div class="form-group me col-6">
+                                    {{render_field(form.volume, class_="form-control", value=request.form.volume)}}
+                                </div>
+                                <div class="form-group me col-6">
+                                    {{render_field(form.delivery_installation, class_="form-control", value=request.form.deliveryInstallation)}}
+                                </div>
+
+                            </div>
+
+                            <div class="form-group row g-7 align-items-center">
+                                <div class="form-group me col-6">
+                                    {{render_field(form.type_of_tank, class_="form-control", value=request.form.type_of_tank)}}
+                                </div>
+                                <div class="form-group me col-6">
+                                    {{render_field(form.transport, class_="form-control", value=request.form.transport)}}
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="form-group me">
+                                    {{render_field(form.country, class_="form-control", value=request.form.country)}}
+                                </div>
+                            </div>
+
+                        </div>
+                </div>
+
+                <div class="row col-md-12">
+                    <div class="form-group text-center me">
+                      <button type="submit" class="btn btn-primary">Get Quotation</button>
+                   </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-2">
+        </div>
+    </div>
+
+{% endblock %}
